@@ -73,6 +73,7 @@
 * fBodyGyroMag-std(): 		Frequency Domain Signal of Body Gyroscope Magnitude -Standard Deviation
 * fBodyGyroJerkMag-mean(): 	Frequency Domain Signal of Body Gyroscope Jerk Magnitude -Mean Value
 * fBodyGyroJerkMag-std(): 	Frequency Domain Signal of Body Gyroscope Jerk Magnitude -Standard Deviation
+
 ###Notes on the data set
 I added two columns in the original datasets, on for the activity type and one for the subject. 
 Then I joined the two main datasets (train and test) into one.
