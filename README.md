@@ -2,6 +2,8 @@
 
 First of all I load the two data sets (test and train) into the respective variables
 ```R
+library(dplyr)
+
 test<-read.table("UCI HAR Dataset/test/X_test.txt")
 train<-read.table("UCI HAR Dataset/train/X_train.txt")
 ```

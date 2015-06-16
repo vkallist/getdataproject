@@ -1,3 +1,5 @@
+library(dplyr)
+
 test<-read.table("UCI HAR Dataset/test/X_test.txt")
 train<-read.table("UCI HAR Dataset/train/X_train.txt")
 activTest<-read.table("UCI HAR Dataset/test/y_test.txt")
