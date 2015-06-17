@@ -1,4 +1,4 @@
-vars<-names(tidyData)
+vars<-names(narrowData)
 descr<-vars
 descr<-gsub("^t", "\t\tTime Domain Signal of ", descr)
 descr<-gsub("^f", "\t\tFrequency Domain Signal of ", descr)

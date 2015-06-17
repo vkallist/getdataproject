@@ -52,13 +52,22 @@ narrowData<-merge(narrowData, activDesc)
 narrowData<-narrowData[, 2:69]
 ```
 I replace all occurrences of the "BodyBody" string in column names with just "Body" 
-(see *CodeBook.md* for an explanation).
+(see *CodeBook.md* for an explanation). Then I remove all dashes (capitalizing the
+next character), remove the parentheses, and finally replace leading t and f's with the
+strings "time" and "freq". I didn't replace word abbreviations to their full names
+since that would make column names too long. I kept the capitalization of the first
+letter of each word so as to make the variable more readable.
 ```R
 names(narrowData)<-gsub("BodyBody", "Body", names(narrowData))
+narrowData2<-narrowData
+names(narrowData2)<-gsub("-(.)", "\\U\\1", names(narrowData2), perl=TRUE)
+names(narrowData2)<-gsub("\\(\\)", "", names(narrowData2))
+names(narrowData2)<-gsub("^t", "time", names(narrowData2))
+names(narrowData2)<-gsub("^f", "freq", names(narrowData2))
 ```
 I summarize all the columns by taking the mean for the data of each activity and subject.
 ```R
-tidyData<-summarise_each(group_by(narrowData, activityDesc, subject), funs(mean))
+tidyData<-summarise_each(group_by(narrowData2, activityDesc, subject), funs(mean))
 ```
 Finally, the summarized data are exported into a file.
 ```R

@@ -24,7 +24,12 @@ narrowData<-merge(narrowData, activDesc)
 narrowData<-narrowData[, 2:69]
 
 names(narrowData)<-gsub("BodyBody", "Body", names(narrowData))
+narrowData2<-narrowData
+names(narrowData2)<-gsub("-(.)", "\\U\\1", names(narrowData2), perl=TRUE)
+names(narrowData2)<-gsub("\\(\\)", "", names(narrowData2))
+names(narrowData2)<-gsub("^t", "time", names(narrowData2))
+names(narrowData2)<-gsub("^f", "freq", names(narrowData2))
 
-tidyData<-summarise_each(group_by(narrowData, activityDesc, subject), funs(mean))
+tidyData<-summarise_each(group_by(narrowData2, activityDesc, subject), funs(mean))
 
 write.table(tidyData, "tidydata.txt", row.names=FALSE)
